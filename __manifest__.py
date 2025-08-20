@@ -1,20 +1,26 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Ocultar Filtro Personalizado en Productos',
-    'version': '17.0.1.0.0',
-    'summary': 'Deshabilita el botón "Agregar filtro personalizado" en la búsqueda de productos del TPV y Ventas.',
+    'name': 'Ocultar Filtro Personalizado (JS)',
+    'version': '17.0.2.0.0', # Incrementamos la versión
+    'summary': 'Deshabilita el botón "Agregar filtro personalizado" usando JavaScript.',
     'description': """
-        Este módulo hereda la vista de búsqueda 'product.view.search.catalog' y le añade el atributo 'disable_custom_filters' para limpiar la interfaz.
+        Este módulo utiliza un parche de JavaScript para ocultar la opción de crear
+        filtros personalizados en los menús de búsqueda, evitando conflictos de vistas XML.
     """,
     'author': 'Gemini Assistant',
-    'category': 'Sales/Point of Sale',
+    'category': 'Technical',
     'depends': [
-        'product',  # Dependencia del módulo de productos, donde está la vista original.
-        'sale'
+        'web',  # Ahora dependemos del módulo 'web' para los assets
     ],
     'data': [
-        'views/product_views.xml', # Carga nuestro archivo de la vista.
+        # Ya no necesitamos cargar un archivo XML de vistas.
     ],
+    'assets': {
+        'web.assets_backend': [
+            # Aquí registramos nuestro archivo JS
+            'hide_custom_filters_app/static/src/js/hide_filter_option.js',
+        ],
+    },
     'installable': True,
     'application': False,
     'auto_install': False,

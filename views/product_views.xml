@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <!-- 
-        Heredamos la vista de búsqueda de catálogo de productos para
-        deshabilitar la opción de crear filtros personalizados.
+        ID del record ahora prefijado con el nombre del módulo para garantizar unicidad.
+        Añadida prioridad alta (99) para asegurar que se aplique después de otras modificaciones.
     -->
-    <record id="view_product_search_catalog_disable_custom_filter" model="ir.ui.view">
+    <record id="hide_custom_filters_app.view_product_search_catalog_disable_custom_filter" model="ir.ui.view">
         <field name="name">product.view.search.catalog.disable.custom.filter</field>
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_view_search_catalog"/>
+        <field name="priority">99</field> <!-- Aumentamos la prioridad -->
         <field name="arch" type="xml">
             <xpath expr="//search" position="attributes">
                 <attribute name="disable_custom_filters">1</attribute>
             </xpath>
         </field>
     </record>
-
 </odoo>

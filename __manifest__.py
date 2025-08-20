@@ -10,6 +10,7 @@
     'category': 'Sales/Point of Sale',
     'depends': [
         'product',  # Dependencia del módulo de productos, donde está la vista original.
+        'sale'
     ],
     'data': [
         'views/product_views.xml', # Carga nuestro archivo de la vista.
